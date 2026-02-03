@@ -7,10 +7,10 @@ import './src/site.scss';
 const siteConfig: SiteConfig = {
   siteId: 'frontend-template-site',
   siteName: 'Frontend Template Site',
-  baseUrl: 'http://apps.local.openedx.io',
-  lmsBaseUrl: 'http://local.openedx.io',
-  loginUrl: 'http://local.openedx.io/login',
-  logoutUrl: 'http://local.openedx.io/logout',
+  baseUrl: 'http://apps.local.openedx.io:8080',
+  lmsBaseUrl: 'http://local.openedx.io:8000',
+  loginUrl: 'http://local.openedx.io:8000/login',
+  logoutUrl: 'http://local.openedx.io:8000/logout',
 
   environment: EnvironmentTypes.PRODUCTION,
   apps: [
