@@ -1,6 +1,7 @@
 import { EnvironmentTypes, SiteConfig, footerApp, headerApp, shellApp } from '@openedx/frontend-base';
 import { authnApp } from '@openedx/frontend-app-authn';
 import { learnerDashboardApp } from '@openedx/frontend-app-learner-dashboard';
+import Main from '@openedx/frontend-app-learner-dashboard/src/Main';
 
 import './src/site.scss';
 
@@ -18,7 +19,17 @@ const siteConfig: SiteConfig = {
     headerApp,
     footerApp,
     authnApp,
-    learnerDashboardApp,
+    {
+      ...learnerDashboardApp,
+      routes: [{
+        id: 'org.openedx.frontend.route.learnerDashboard.main',
+        path: '/learner-dashboard',
+        handle: {
+          role: 'org.openedx.frontend.role.dashboard'
+        },
+        Component: Main
+      }]
+    },
   ],
   externalRoutes: [
     {
