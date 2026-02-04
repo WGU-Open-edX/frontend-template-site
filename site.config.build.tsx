@@ -2,6 +2,10 @@ import { EnvironmentTypes, SiteConfig, footerApp, headerApp, shellApp } from '@o
 import { authnApp } from '@openedx/frontend-app-authn';
 import { learnerDashboardApp } from '@openedx/frontend-app-learner-dashboard';
 import Main from '@openedx/frontend-app-learner-dashboard/src/Main';
+import { instructApp } from '@openedx/frontend-app-instruct';
+import CourseInfoPage from '@openedx/frontend-app-instruct/src/courseInfo/CourseInfoPage';
+import CohortsPage from '@openedx/frontend-app-instruct/src/courseInfo/CourseInfoPage';
+import OpenResponsesPage from '@openedx/frontend-app-instruct/src/openResponses/OpenResponsesPage';
 
 import './src/site.scss';
 
@@ -19,6 +23,57 @@ const siteConfig: SiteConfig = {
     headerApp,
     footerApp,
     authnApp,
+    {
+      ...instructApp,
+      routes: [
+        {
+          id: 'org.openedx.frontend.route.instructor.main',
+          path: '/instructor/:courseId',
+          handle: {
+            role: 'org.openedx.frontend.role.instructor'
+          },
+          Component: Main,
+          children: [
+            {
+              path: 'course_info',
+              element: <CourseInfoPage />
+            },
+            // {
+            //   path: 'membership',
+            //   element: <MembershipPage />
+            // },
+            {
+              path: 'cohorts',
+              element: <CohortsPage />
+            },
+            // {
+            //   path: 'extensions',
+            //   element: <ExtensionsPage />
+            // },
+            // {
+            //   path: 'student_admin',
+            //   element: <StudentAdminPage />
+            // },
+            // {
+            //   path: 'data_download',
+            //   element: <DataDownloadPage />
+            // },
+            // {
+            //   path: 'special_exams',
+            //   element: <SpecialExamsPage />
+            // },
+            // {
+            //   path: 'certificates',
+            //   element: <CertificatesPage />
+            // },
+            {
+              path: 'open_responses',
+              element: <OpenResponsesPage />
+            }
+          ]
+        }
+      ]
+    },
     {
       ...learnerDashboardApp,
       routes: [{
