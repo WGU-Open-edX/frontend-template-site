@@ -3,9 +3,6 @@
   "compilerOptions": {
     "rootDir": ".",
     "outDir": "dist",
-    "paths": {
-      "@src/*": ["./node_modules/@openedx/frontend-app-instruct/src/*"],
-    } 
   },
   "include": [
     "src/**/*",
